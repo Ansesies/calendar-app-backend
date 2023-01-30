@@ -27,10 +27,12 @@ app.use( express.json());
 
 //rutas
 app.use('/api/auth', require('./routes/auth'));
-
-
 //TODO: CRUD: Eventos
 app.use('/api/events', require('./routes/events'));
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+})
 
 //escuchar peticiones
 app.listen( process.env.PORT, () => {
